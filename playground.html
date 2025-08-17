@@ -5,5 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exploring Vue</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Exploring Vue!</h1>
+
+    <div id="app">{{message}}</div>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp } = Vue;
+
+    const app = createApp({
+      data() {
+        return {
+          message: "Hey Sumit!",
+        };
+      },
+    });
+
+    app.mount("#app");
+  </script>
 </html>
