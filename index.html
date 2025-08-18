@@ -3,7 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue</title>
+    <title>Vue Exercises</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Exercises</h1>
+
+    <div id="app">
+      <h2>{{movieName}}</h2>
+      <h3>Characters</h3>
+      <ul v-if="characters.length">
+        <li v-for="character in characters">{{ character }}</li>
+      </ul>
+      <p v-else>No characters found</p>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const { createApp } = Vue;
+
+    const app = createApp({
+      data() {
+        return {
+          movieName: "Mission Impossible",
+          characters: ["Ethan Hunt", "Luther", "Benji", "Julia", "Ilsa"],
+          // characters: [],
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
 </html>
