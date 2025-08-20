@@ -15,6 +15,12 @@
         <li v-for="character in characters">{{ character }}</li>
       </ul>
       <p v-else>No characters found</p>
+
+      <p>
+        <span v-for="(character, index) in characters"
+          >{{character}}{{index === characters.length - 1 ? "" : ", " }}</span
+        >
+      </p>
     </div>
   </body>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

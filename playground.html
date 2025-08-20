@@ -9,6 +9,30 @@
     <h1>Exploring Vue!</h1>
 
     <div id="app">
+      <h1>Counter</h1>
+
+      <h3>{{count}}</h3>
+
+      <h4>{{incrementAmount}}</h4>
+
+      <div>
+        <label for="incCount">Increment Count</label>
+        <input
+          type="number"
+          v-bind:value="incrementAmount"
+          v-on:input="changeIncrementCount"
+        />
+      </div>
+
+      <div>
+        <label for="incCount">Increment Count</label>
+        <input type="number" v-model="incrementAmount" />
+      </div>
+
+      <button v-on:click="incrementCount">Increment Count</button>
+
+      <hr />
+
       <p v-if="message.length % 2 === 0">Even: {{message.toUpperCase()}}</p>
       <p v-else>Odd: {{message}}</p>
 
@@ -33,6 +57,8 @@
     const app = createApp({
       data() {
         return {
+          count: 10,
+          incrementAmount: 1,
           message: "Hey Sumit!",
           listOfNumbers: [1, 2, 3, 4, 5],
           items: [
@@ -63,6 +89,14 @@
             },
           ],
         };
+      },
+      methods: {
+        incrementCount() {
+          this.count += this.incrementAmount;
+        },
+        changeIncrementCount(event) {
+          this.incrementAmount = Number(event.target.value);
+        },
       },
     });
 
