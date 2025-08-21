@@ -22,6 +22,11 @@
         />
       </div>
 
+      <div>
+        <label for="incCount">Increment Count</label>
+        <input type="number" v-model="incrementAmount" />
+      </div>
+
       <button v-on:click="incrementCount">Increment Count</button>
       <button v-on:click="increment(10, $event)">Increment Count</button>
 

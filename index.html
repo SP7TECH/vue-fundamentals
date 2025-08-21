@@ -10,9 +10,29 @@
 
     <div id="app">
       <h2>{{movieName}}</h2>
+
+      <h3>Add Characters</h3>
+
+      <p>{{characterName}}</p>
+      <div>
+        <label for="character">Character Name</label>
+        <input
+          type="text"
+          v-bind:value="characterName"
+          v-on:input="handleCharacterNameChange"
+        />
+      </div>
+
+      <button v-on:click="addCharacter">Add Character</button>
+
       <h3>Characters</h3>
       <ul v-if="characters.length">
-        <li v-for="character in characters">{{ character }}</li>
+        <li v-for="character in characters">
+          {{ character }}
+          <button v-on:click="markAsFavourite(character)">
+            Mark as favourite
+          </button>
+        </li>
       </ul>
       <p v-else>No characters found</p>
 
@@ -21,6 +41,15 @@
           >{{character}}{{index === characters.length - 1 ? "" : ", " }}</span
         >
       </p>
+
+      <hr />
+
+      <h3>Favourite Characters</h3>
+
+      <ul v-if="favourites.length">
+        <li v-for="character in favourites">{{character}}</li>
+      </ul>
+      <p v-else>No favourite characters found!</p>
     </div>
   </body>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -32,9 +61,22 @@
       data() {
         return {
           movieName: "Mission Impossible",
+          characterName: "some",
           characters: ["Ethan Hunt", "Luther", "Benji", "Julia", "Ilsa"],
+          favourites: [],
           // characters: [],
         };
+      },
+      methods: {
+        addCharacter() {
+          this.characters.push(this.characterName);
+        },
+        handleCharacterNameChange(e) {
+          this.characterName = e.target.value;
+        },
+        markAsFavourite(name) {
+          this.favourites.push(name);
+        },
       },
     });
     app.mount("#app");
