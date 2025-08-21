@@ -70,6 +70,7 @@
       methods: {
         addCharacter() {
           this.characters.push(this.characterName);
+          this.characterName = "";
         },
         handleCharacterNameChange(e) {
           this.characterName = e.target.value;

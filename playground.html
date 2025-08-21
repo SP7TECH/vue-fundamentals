@@ -9,7 +9,7 @@
     <h1>Exploring Vue!</h1>
 
     <div id="app">
-      <h1>Counter</h1>
+      <h1>{{counterTitle}}</h1>
 
       <h3>{{count}}</h3>
       <h4>{{incrementAmount}}</h4>
@@ -56,6 +56,7 @@
     const app = createApp({
       data() {
         return {
+          counterTitle: "Counter Standard",
           count: 10,
           incrementAmount: 1,
           message: "Hey Sumit!",
@@ -88,6 +89,15 @@
             },
           ],
         };
+      },
+      watch: {
+        count(newData) {
+          if (newData > 20) {
+            this.counterTitle = "Counter Standard - Very Long";
+          } else {
+            this.counterTitle = "Counter Standard";
+          }
+        },
       },
       methods: {
         increment(amount, event) {
